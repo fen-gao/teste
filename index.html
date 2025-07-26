@@ -1,56 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Redirecionando para a Shopee</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Aqui você pode instalar seu Pixel do Facebook -->
-  <style>
-    body {
-      background-color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px 20px;
-      color: #333;
-    }
-    .box {
-      max-width: 400px;
-      margin: auto;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      padding: 30px 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    h1 {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-    p {
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-    a.botao {
-      background-color: #ee4d2d;
-      color: white;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-      display: inline-block;
-    }
-    a.botao:hover {
-      background-color: #d8431d;
-    }
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h1>Você está prestes a ser redirecionado</h1>
-    <p>Ao clicar no botão abaixo, você será levado para o site oficial da Shopee para concluir sua compra com segurança.</p>
-    <a class="botao" href="https://s.shopee.com.br/8zuWdyrChm" target="_blank" rel="noopener noreferrer">
-      Ir para a Shopee
-    </a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecionando para a Shopee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Aqui você pode instalar seu Pixel do Facebook -->
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px 20px;
+        color: #333;
+      }
+      .box {
+        max-width: 400px;
+        margin: auto;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 30px 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      p {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+      a.botao {
+        background-color: #ee4d2d;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.3s;
+        display: inline-block;
+      }
+      a.botao:hover {
+        background-color: #d8431d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Você está prestes a ser redirecionado</h1>
+      <p>
+        Ao clicar no botão abaixo, você será levado para o site oficial da Shopee para concluir sua
+        compra com segurança.
+      </p>
+      <a
+        class="botao"
+        href="https://s.shopee.com.br/8zuWdyrChm"
+        target="_blank"
+        rel="noopener noreferrer"
+        id="botao-redirecionamento"
+      >
+        Ir para a Shopee
+      </a>
+    </div>
+
+    <script>
+      // Função para redirecionar automaticamente
+      function redirecionarAutomaticamente() {
+        const botao = document.getElementById('botao-redirecionamento');
+        if (botao) {
+          // Tenta clicar no botão automaticamente
+          botao.click();
+        } else {
+          // Fallback: redirecionamento direto se o botão não for encontrado
+          window.open('https://s.shopee.com.br/8zuWdyrChm', '_blank');
+        }
+      }
+
+      // Executa o redirecionamento quando a página carregar
+      window.addEventListener('load', function () {
+        // Pequeno delay para garantir que tudo carregou
+        setTimeout(redirecionarAutomaticamente, 1000);
+      });
+
+      // Também executa quando o DOM estiver pronto (mais rápido)
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(redirecionarAutomaticamente, 1000);
+      });
+    </script>
+  </body>
 </html>
