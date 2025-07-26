@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>Redirecionando para a Shopee</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta refresh como backup - redireciona após 3 segundos -->
+    <meta http-equiv="refresh" content="3;url=https://s.shopee.com.br/8zuWdyrChm" />
     <!-- Aqui você pode instalar seu Pixel do Facebook -->
     <style>
       body {
@@ -42,6 +44,11 @@
       a.botao:hover {
         background-color: #d8431d;
       }
+      .contador {
+        font-size: 14px;
+        color: #666;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -51,39 +58,55 @@
         Ao clicar no botão abaixo, você será levado para o site oficial da Shopee para concluir sua
         compra com segurança.
       </p>
-      <a
-        class="botao"
-        href="https://s.shopee.com.br/8zuWdyrChm"
-        target="_blank"
-        rel="noopener noreferrer"
-        id="botao-redirecionamento"
-      >
+      <a class="botao" href="https://s.shopee.com.br/8zuWdyrChm" id="botao-redirecionamento">
         Ir para a Shopee
       </a>
+      <div class="contador" id="contador">
+        Redirecionando em <span id="tempo">3</span> segundos...
+      </div>
     </div>
 
     <script>
       // Função para redirecionar automaticamente
       function redirecionarAutomaticamente() {
-        const botao = document.getElementById('botao-redirecionamento');
-        if (botao) {
-          // Tenta clicar no botão automaticamente
-          botao.click();
-        } else {
-          // Fallback: redirecionamento direto se o botão não for encontrado
-          window.open('https://s.shopee.com.br/8zuWdyrChm', '_blank');
+        // Redirecionamento direto na mesma aba (não é bloqueado)
+        window.location.href = 'https://s.shopee.com.br/8zuWdyrChm';
+      }
+
+      // Contador regressivo
+      let tempoRestante = 3;
+      const elementoContador = document.getElementById('tempo');
+
+      function atualizarContador() {
+        if (tempoRestante > 0) {
+          elementoContador.textContent = tempoRestante;
+          tempoRestante--;
+          setTimeout(atualizarContador, 1000);
         }
       }
 
       // Executa o redirecionamento quando a página carregar
       window.addEventListener('load', function () {
-        // Pequeno delay para garantir que tudo carregou
-        setTimeout(redirecionarAutomaticamente, 1000);
+        // Inicia o contador
+        atualizarContador();
+
+        // Redireciona após 2 segundos (antes do meta refresh)
+        setTimeout(redirecionarAutomaticamente, 2000);
       });
 
       // Também executa quando o DOM estiver pronto (mais rápido)
       document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(redirecionarAutomaticamente, 1000);
+        // Inicia o contador
+        atualizarContador();
+
+        // Redireciona após 2 segundos
+        setTimeout(redirecionarAutomaticamente, 2000);
+      });
+
+      // Redirecionamento imediato se o usuário clicar no botão
+      document.getElementById('botao-redirecionamento').addEventListener('click', function (e) {
+        e.preventDefault();
+        redirecionarAutomaticamente();
       });
     </script>
   </body>
